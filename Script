@@ -1,0 +1,35 @@
+document.getElementById("formulario").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let socio = {
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        documento: document.getElementById("documento").value,
+        email: document.getElementById("email").value,
+        telefono: document.getElementById("telefono").value
+    };
+
+    fetch("/guardar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(socio)
+    })
+
+    .then(respuesta => respuesta.text())
+
+    .then(datos => {
+
+        document.getElementById("mensaje").innerText = datos;
+
+        document.getElementById("formulario").reset();
+
+    })
+
+    .catch(error => {
+        document.getElementById("mensaje").innerText = "Error al guardar";
+    });
+
+});
