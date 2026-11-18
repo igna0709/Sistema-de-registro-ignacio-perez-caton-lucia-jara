@@ -1,0 +1,13 @@
+
+CREATE DATABASE socios_db;
+
+USE socios_db;
+
+CREATE TABLE socios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    documento VARCHAR(100),
+    email VARCHAR(100),
+    telefono VARCHAR(100)
+);
